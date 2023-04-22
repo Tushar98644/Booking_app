@@ -5,7 +5,7 @@ const DeleteHotel = require('../controllers/hotelController');
 const GetHotel = require('../controllers/hotelController');
 const GetHotels = require('../controllers/hotelController');
 const router = express.Router();
-const Hotel = require('../models/Hotel');
+// const Hotel = require('../models/Hotel');
 
 router.post('/', CreateHotel);
 

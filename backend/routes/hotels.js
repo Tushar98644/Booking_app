@@ -1,9 +1,9 @@
 const express = require('express');
-const CreateHotel = require('../controllers/hotelcontroller');
-const UpdateHotel = require('../controllers/hotelcontroller');
-const DeleteHotel = require('../controllers/hotelcontroller');
-const GetHotel = require('../controllers/hotelcontroller');
-const GetHotels = require('../controllers/hotelcontroller');
+const CreateHotel = require('../controllers/hotelController');
+const UpdateHotel = require('../controllers/hotelController');
+const DeleteHotel = require('../controllers/hotelController');
+const GetHotel = require('../controllers/hotelController');
+const GetHotels = require('../controllers/hotelController');
 const router = express.Router();
 const Hotel = require('../models/Hotel');
 

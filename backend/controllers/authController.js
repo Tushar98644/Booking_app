@@ -23,18 +23,28 @@ const RegisterUser = async (req, res) => {
 }
 
 const Login = async (req, res) => {
-    try {
-        const user = await user.findOne({ username: req.body.username });
-        !user && res.status(400).json("Wrong credentials!");
 
-        const validated = await bcrypt.compare(req.body.password, user.password);
+    console.log(req.body);
+
+    try {
+        const User = await user.findOne({ username: req.body.username });
+        !User && res.status(400).json("Wrong credentials!");
+
+        const validated = await bcrypt.compare(req.body.password, User.password);
         !validated && res.status(400).json("Wrong credentials!");
 
-        const { password, ...others } = user._doc;
-        res.status(200).json(others);
+        const token = jwt.sign({ id: User._id, isAdmin: User.isAdmin }, process.env.SECRET_KEY, { expiresIn: "5d" });
+
+        const { password, isAdmin, ...others } = user._doc;
+        res.cookie("access_token",token,{
+            httpOnly:true,
+        }).status(200).json(User);
+        console.log('User logged in successfully');
+        console.log(User);
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 };
 
-module.exports =  RegisterUser , Login;
+module.exports = { RegisterUser, Login };

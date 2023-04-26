@@ -1,9 +1,18 @@
 const express = require('express');
-const router = express.Router();
+const {UpdateUser, DeleteUser , GetUser ,GetUsers} = require('../controllers/userController');
 
-router.get('/user',(req,res)=>{
-    res.send('Hello World');
-}
-);
+const router = express.Router();
+// make a dropdown 
+
+
+router.post('/update',UpdateUser);
+
+router.delete('/delete',DeleteUser);
+
+router.get('/:id',GetUser);
+
+router.get('',GetUsers);
+
+
 
 module.exports = router;

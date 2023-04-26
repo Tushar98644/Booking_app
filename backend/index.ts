@@ -1,11 +1,16 @@
-const express = require('express');
-const app =  express();
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const authRoute = require('./routes/auth');
-const hotelRoute = require('./routes/hotels');  
-const cookieParser = require('cookie-parser');
 
+
+
+import express from 'express';
+import mongoose from 'mongoose';
+import authRoute from './routes/auth';
+import hotelRoute from './routes/hotels';
+import cookieParser from 'cookie-parser';
+
+const app = express();
+
+// import config from "config";
+import * as dotenv from "dotenv";
 dotenv.config();
     
 mongoose.connect(process.env.MONGO_URI)
@@ -24,3 +29,5 @@ app.listen(process.env.PORT,()=>{
     console.log('Server is running on port',process.env.PORT);
 }   
 );
+
+export default app;

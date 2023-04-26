@@ -1,10 +1,11 @@
-const User = require('../models/User');
+// const User = require('../models/User');
+import User from '../models/User';
 
 const UpdateUser = async (req,res)=>{
     try{
         const user = await User.findById(req.params.id);
-        if(user.userId === req.body.userId){
-            await user.updateOne({$set:req.body});
+        if(user?._id === req.body.userId){
+            await user?.updateOne({$set:req.body});
             res.status(200).json('User has been updated');
         }else{
             res.status(403).json('You can update only your user');
@@ -17,8 +18,8 @@ const UpdateUser = async (req,res)=>{
 const DeleteUser = async (req,res)=>{
     try{
         const user = await User.findById(req.params.id);
-        if(user.userId === req.body.userId){
-            await user.deleteOne();
+        if(user?._id === req.body.d){
+            await user?.deleteOne();
             res.status(200).json('User has been deleted');
         }else{
             res.status(403).json('You can delete only your user');
@@ -46,4 +47,5 @@ const GetUsers = async (req,res)=>{
     }
 }
 
-module.exports =  UpdateUser, DeleteUser, GetUser, GetUsers;
+// module.exports =  UpdateUser, DeleteUser, GetUser, GetUsers;
+export  { UpdateUser, DeleteUser, GetUser, GetUsers };

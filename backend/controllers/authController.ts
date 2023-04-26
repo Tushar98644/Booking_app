@@ -1,5 +1,8 @@
-const user = require('../models/User');
-const bcrypt = require('bcryptjs');
+// const user = require('../models/User');
+// const bcrypt = require('bcryptjs');
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import user from '../models/User';
 
 const RegisterUser = async (req, res) => {
     try {
@@ -30,12 +33,12 @@ const Login = async (req, res) => {
         const User = await user.findOne({ username: req.body.username });
         !User && res.status(400).json("Wrong credentials!");
 
-        const validated = await bcrypt.compare(req.body.password, User.password);
+        const validated = await bcrypt.compare(req.body.password, User?.password);
         !validated && res.status(400).json("Wrong credentials!");
 
-        const token = jwt.sign({ id: User._id, isAdmin: User.isAdmin }, process.env.SECRET_KEY, { expiresIn: "5d" });
+        const token = jwt.sign({ id: User?._id, isAdmin: User?.isAdmin }, process.env.SECRET_KEY, { expiresIn: "5d" });
 
-        const { password, isAdmin, ...others } = user._doc;
+        // const { password, isAdmin, ...others } = user._doc;
         res.cookie("access_token",token,{
             httpOnly:true,
         }).status(200).json(User);
@@ -47,4 +50,5 @@ const Login = async (req, res) => {
     }
 };
 
-module.exports = { RegisterUser, Login };
+// module.exports = { RegisterUser, Login };
+export default { RegisterUser, Login };

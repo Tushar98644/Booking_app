@@ -50,5 +50,5 @@ const Login = async (req, res) => {
     }
 };
 
-// module.exports = { RegisterUser, Login };
-export default { RegisterUser, Login };
+// export default { RegisterUser, Login };
+export { RegisterUser, Login };

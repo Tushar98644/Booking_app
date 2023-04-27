@@ -6,8 +6,6 @@
 // const GetHotels = require('../controllers/hotelController');
 // const router = express.Router();
 // const Hotel = require('../models/Hotel');
-
-import express from 'express';
 import { CreateHotel, UpdateHotel, DeleteHotel, GetHotel, GetHotels } from '../controllers/hotelController';
 import router from './users';
 

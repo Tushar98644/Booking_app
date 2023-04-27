@@ -6,8 +6,10 @@ const CreateHotel = async (req,res)=>{
     try{
        const savedHotel= await newHotel.save();
         res.status(200).json(savedHotel);
+        console.log(savedHotel);
     }catch(err){
         res.status(400).json(err);
+        console.log(err);
     }
 }
 
@@ -22,6 +24,7 @@ const UpdateHotel = async (req,res)=>{
         }
     }catch(err){
         res.status(500).json(err);
+        console.log(err);
     }
 }
 
@@ -36,6 +39,7 @@ const DeleteHotel = async (req,res)=>{
         }
     }catch(err){
         res.status(500).json(err);
+        console.log(err);
     }
 }
 
@@ -45,6 +49,7 @@ const GetHotel = async (req,res)=>{
         res.status(200).json(hotel);
     }catch(err){
         res.status(500).json(err);
+        console.log(err);
     }
 }
 
@@ -54,6 +59,7 @@ const GetHotels = async (req,res)=>{
         res.status(200).json(hotels);
     }catch(err){
         res.status(500).json(err);
+        console.log(err);
     }
 }
 

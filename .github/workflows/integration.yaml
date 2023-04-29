@@ -24,7 +24,7 @@ jobs:
       run: pnpm install
       run: pnpm run build
 
-unit-tests:
+  unit-tests:
     runs-on: ubuntu-20.04
     strategy:
       matrix:

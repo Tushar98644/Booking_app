@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:    
+      workdir: ./backend
     strategy:
       matrix:
         node-version: [18,16]
@@ -28,7 +30,7 @@ jobs:
         cache-dependency-path: "**/pnpm-lock.yaml"
     - name: Install dependencies
       run: pnpm install
-      working-directory: ./backend
+      working-directory: ${{env.workdir}}
     - name: Build
       run: pnpm run build
       working-directory: ./backend

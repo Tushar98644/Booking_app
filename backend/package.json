@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "start": "npm run build && node build/index.js",
-    "dev": "npx nodemon ",
-    "build": "rimraf ./build && tsc",
-    "test:unit": "pnpm run test"
+    "dev": "npx nodemon",
+    "build": "rimraf ./build && tsc"
   },
   "keywords": [],
   "author": "",

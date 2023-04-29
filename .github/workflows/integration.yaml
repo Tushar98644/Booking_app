@@ -58,7 +58,7 @@ jobs:
       run: pnpm install
       working-directory: ./backend
     - name: Unit tests
-      run: pnpm run test:unit
+      run: pnpm run test
       working-directory: ./backend
     # - run: pnpm install
     # - run: pnpm run test

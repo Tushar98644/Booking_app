@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    working-directory: ./backend/
     strategy:
       matrix:
         node-version: [18]
@@ -24,13 +25,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-        working-directory: ./backend/
         cache-dependency-path: "./backend/pnpm-lock.yaml"
     - run: pnpm install
     - run: pnpm run build
 
   unit-tests:
     runs-on: ubuntu-latest
+    working-directory: ./backend/
     strategy:
       matrix:
         node-version: [18]
@@ -44,8 +45,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-        working-directory: ./backend/
         cache-dependency-path: "./backend/pnpm-lock.yaml"
-
     - run: pnpm install
     - run: pnpm run test

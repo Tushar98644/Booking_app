@@ -25,6 +25,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         working-directory: ./backend/
+        cache-dependency-path: "./backend/pnpm-lock.yaml"
     - run: pnpm install
     - run: pnpm run build
 
@@ -44,5 +45,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         working-directory: ./backend/
+        cache-dependency-path: "./backend/pnpm-lock.yaml"
+
     - run: pnpm install
     - run: pnpm run test

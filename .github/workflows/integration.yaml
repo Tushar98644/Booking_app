@@ -28,9 +28,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm i
-    - run: pnpm run build 
+        cache: 'npm'
+    - run: npm i
+    - run: npm run build 
 
   unit-tests:
 
@@ -50,6 +50,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm i
-    - run: pnpm run test
+        cache: 'npm'
+    - run: npm i
+    - run: npm run test
